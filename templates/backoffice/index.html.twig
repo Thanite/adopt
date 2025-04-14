@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BackofficeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Souscriptions Disponibles</h1>
+    <div class="d_flex"><a href="{{ path('subscription_create') }}" class="btn btn-primary sm">Créer</a></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>nom</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, sub in subs %}
+            <tr>
+                <td>{{ sub.title }}</td>
+                <td><a href="{{ path('subscription_edit', { 'id' : sub.id}) }}" class="btn btn-primary sm">Modifier</a></td>
+            </tr>
+        {%  endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}
